@@ -4,6 +4,7 @@ from pages.settings import settings_view
 from pages.about import about_view
 from pages.albums import albums_view
 from assets.nav_bar import nav_bar
+from pages.tracks import tracks_view
 
 def main(page: ft.Page):
     page.title = "Jam Music"
