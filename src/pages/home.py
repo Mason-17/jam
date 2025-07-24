@@ -1,6 +1,8 @@
 import flet as ft
+from assets.nav_bar import nav_bar
 
 def home_view(page: ft.Page):
+    n = nav_bar()
     def go_to_settings(e):
         page.go("/settings")
 
@@ -12,6 +14,7 @@ def home_view(page: ft.Page):
         controls=[
             ft.Text("Home Page", size=30),
             ft.ElevatedButton("Go to Settings", on_click=go_to_settings),
-            ft.ElevatedButton("Go to Albums", on_click=go_to_albums)
+            ft.ElevatedButton("Go to Albums", on_click=go_to_albums),
+            n,
         ],
     )

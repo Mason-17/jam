@@ -3,9 +3,12 @@ from pages.home import home_view
 from pages.settings import settings_view
 from pages.about import about_view
 from pages.albums import albums_view
+from assets.nav_bar import nav_bar
 
 def main(page: ft.Page):
     page.title = "Jam Music"
+    page.window.maximized = True
+    page.window.icon="/assets/icon.ico"
     
     page.go("/")
 
