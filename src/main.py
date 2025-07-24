@@ -23,6 +23,8 @@ def main(page: ft.Page):
             page.views.append(about_view(page))
         elif page.route == "/albums":
             page.views.append(albums_view(page))
+        elif page.route == "/tracks":
+            page.views.append(tracks_view(page))
         else:
             page.views.append(
                 ft.View(

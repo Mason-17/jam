@@ -1,6 +1,8 @@
 import flet as ft
+from assets.nav_bar import nav_bar
 
 def albums_view(page: ft.Page):
+    nb = nav_bar(page)
     images = ft.GridView(
         expand=1,
         runs_count=5,
@@ -22,7 +24,8 @@ def albums_view(page: ft.Page):
         "/albums",
         controls=[
             ft.Text("album page"),
-            images
+            images,
+            nb
         ]
 
     )
