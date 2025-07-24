@@ -5,6 +5,7 @@ from pages.about import about_view
 from pages.albums import albums_view
 from assets.nav_bar import nav_bar
 from pages.tracks import tracks_view
+from pages.now_playing import now_playing_view
 
 def main(page: ft.Page):
     page.title = "Jam Music"
@@ -26,6 +27,8 @@ def main(page: ft.Page):
             page.views.append(albums_view(page))
         elif page.route == "/tracks":
             page.views.append(tracks_view(page))
+        elif page.route == "/now_playing":
+            page.views.append(now_playing_view(page))
         else:
             page.views.append(
                 ft.View(

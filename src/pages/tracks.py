@@ -10,6 +10,7 @@ def tracks_view(page: ft.Page):
             ft.ProgressBar(
                 width=400,
                 color=ft.Colors.INDIGO,
-            )
+            ),
+            nb
         ]
     )
