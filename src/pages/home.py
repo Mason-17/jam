@@ -13,8 +13,6 @@ def home_view(page: ft.Page):
         "/",
         controls=[
             ft.Text("Home Page", size=30),
-            ft.ElevatedButton("Go to Settings", on_click=go_to_settings),
-            ft.ElevatedButton("Go to Albums", on_click=go_to_albums),
             n,
         ],
     )
