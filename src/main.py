@@ -37,4 +37,8 @@ def main(page: ft.Page):
         page.update()
     page.on_route_change = route_change
 
-ft.app(target=main)
+ft.app(
+    target=main,
+    assets_dir="assets",
+    #icon="icon.ico"
+    )
