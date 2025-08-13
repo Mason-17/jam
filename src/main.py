@@ -11,6 +11,8 @@ def main(page: ft.Page):
     page.title = "Jam Music"
     page.window.maximized = True
     page.window.icon="/assets/icon.ico"
+    #page.PageTransitionTheme
+    
     
     page.go("/")
 
