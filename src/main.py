@@ -14,7 +14,7 @@ def main(page: ft.Page):
     page.window_width = 900
     page.window_height = 600
     page.window.maximized = True
-    page.theme = Globals.dark_default
+    page.theme = Globals.purple_dark_default
     print(Globals.music_dir)
 
     def close_di_open_picker():
@@ -36,7 +36,7 @@ def main(page: ft.Page):
     page.add(music_dir_dialog)
 
 
-    if Globals.music_dir == "":
+    if Globals.music_dir == "f":
         page.open(music_dir_dialog)
 
     active_page = "albums"
