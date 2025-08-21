@@ -8,7 +8,6 @@ def main(page: ft.Page):
     page.title = "Jam Music Player"
     page.horizontal_alignment = ft.CrossAxisAlignment.STRETCH
     page.vertical_alignment = ft.MainAxisAlignment.START
-    #page.bgcolor = ft.Colors.GREY_100
     page.window_width = 900
     page.window_height = 600
     page.window_maximized = True
@@ -25,6 +24,8 @@ def main(page: ft.Page):
         #content=nav_column
     )
 
+    
+
 
     # Navigation handler
     def navigate(route):
@@ -38,10 +39,19 @@ def main(page: ft.Page):
             content_container.content = ArtistsPage()
         page.update()
 
+
+    sidebar = ft.Column(
+        controls=[
+            ft.IconButton(icon=ft.Icons.ALBUM, on_click=lambda e: navigate("albums")),
+            ft.IconButton(icon=ft.Icons.MUSIC_NOTE, on_click=lambda e: navigate("songs"))
+        ]
+    )
+
     # Layout structure
     main_layout = ft.Row(
         controls=[
-            nav_bar,
+            #nav_bar,
+            sidebar,
             content_container
         ],
         expand=True
