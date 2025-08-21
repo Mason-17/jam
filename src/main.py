@@ -2,6 +2,8 @@ import flet as ft
 from pages.albums_page import AlbumsPage
 from pages.songs_page import SongsPage
 from pages.artists_page import ArtistsPage
+from globals import Globals
+from controls import Controls
 
 
 def main(page: ft.Page):
@@ -10,7 +12,30 @@ def main(page: ft.Page):
     page.vertical_alignment = ft.MainAxisAlignment.START
     page.window_width = 900
     page.window_height = 600
-    page.window_maximized = True
+    page.window.maximized = True
+    page.theme = Globals.dark_default
+    print(Globals.music_dir)
+
+    def close_di_open_picker():
+        page.close(music_dir_dialog)
+        file_dialog = ft.FilePicker()
+        page.add(file_dialog)
+        file_dialog.get_directory_path()
+
+    music_dir_dialog = ft.AlertDialog(
+        modal=True,
+        title="No music folder",
+        content=ft.Text("Pick a foler?"),
+        actions=[
+            ft.TextButton(text="Yes", on_click=lambda e: close_di_open_picker()),
+            ft.TextButton(text="No", on_click=lambda e: page.close(music_dir_dialog))
+        ]
+    )
+    page.add(music_dir_dialog)
+
+    if Globals.music_dir == "":
+        print("lets fix that")
+        page.open(music_dir_dialog)
 
     active_page = "albums"
     sidebar_collapsed = False

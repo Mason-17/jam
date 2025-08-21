@@ -6,6 +6,7 @@ def AlbumsPage():
 
     for _ in range(num_containers):
         container = ft.Container(
+            ink=True,
             width=180,
             height=180,
             border_radius=8,
@@ -16,7 +17,8 @@ def AlbumsPage():
                 top=ft.BorderSide(1, ft.Colors.ON_SURFACE_VARIANT),
                 right=ft.BorderSide(1, ft.Colors.ON_SURFACE_VARIANT),
                 bottom=ft.BorderSide(1, ft.Colors.ON_SURFACE_VARIANT),
-            )
+            ),
+            on_click=lambda e: print("clicked!!")
         )
         containers.append(container)
 
