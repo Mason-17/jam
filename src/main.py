@@ -1,0 +1,56 @@
+import flet as ft
+from pages.albums_page import AlbumsPage
+from pages.songs_page import SongsPage
+from pages.artists_page import ArtistsPage
+
+
+def main(page: ft.Page):
+    page.title = "Jam Music Player"
+    page.horizontal_alignment = ft.CrossAxisAlignment.STRETCH
+    page.vertical_alignment = ft.MainAxisAlignment.START
+    #page.bgcolor = ft.Colors.GREY_100
+    page.window_width = 900
+    page.window_height = 600
+    page.window_maximized = True
+
+    active_page = "albums"
+    sidebar_collapsed = False
+
+    # Containers
+    content_container = ft.Container(expand=True)
+
+    nav_bar = ft.Container(
+        #bgcolor=ft.Colors.GREY_200,
+        padding=10,
+        #content=nav_column
+    )
+
+
+    # Navigation handler
+    def navigate(route):
+        nonlocal active_page
+        active_page = route
+        if route == "albums":
+            content_container.content = AlbumsPage()
+        elif route == "songs":
+            content_container.content = SongsPage()
+        elif route == "artists":
+            content_container.content = ArtistsPage()
+        page.update()
+
+    # Layout structure
+    main_layout = ft.Row(
+        controls=[
+            nav_bar,
+            content_container
+        ],
+        expand=True
+    )
+
+    # Set default page content
+    content_container.content = AlbumsPage()
+
+    page.add(main_layout)
+
+
+ft.app(target=main)
