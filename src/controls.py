@@ -1,5 +1,6 @@
 import userpaths
 import flet as ft
+from music_state import Music_State
 
 class Controls:
     music_folder_selector = ft.FilePicker(
@@ -17,5 +18,10 @@ class Controls:
             ]
         )
     )
+
+    def play_pause():
+        if globals.playing == True:
+            Music_State.pause()
+        else: Music_State.play()
 
     
