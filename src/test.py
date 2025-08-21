@@ -1,36 +1,35 @@
-import asyncio
-from dataclasses import dataclass
-
 import flet as ft
 
 
-@dataclass
-class AppState:
-    counter: float
-
-    async def start_counter(self):
-        self.counter = 0
-        yield
-        for _ in range(0, 10):
-            self.counter += 0.1
-            yield
-            await asyncio.sleep(0.5)
-
-
 def main(page: ft.Page):
-    state = AppState(counter=0)
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
 
-    page.add(
-        ft.StateView(
-            state,
-            lambda state: ft.Column(
-                [
-                    ft.ProgressBar(state.counter),
-                    ft.Button("Run!", on_click=state.start_counter),
-                ]
-            ),
-        )
+    page.floating_action_button = ft.FloatingActionButton(
+        icon=ft.Icons.ADD, shape=ft.CircleBorder()
+    )
+    page.floating_action_button_location = ft.FloatingActionButtonLocation.CENTER_DOCKED
+
+    page.appbar = ft.AppBar(
+        title=ft.Text("Bottom AppBar Demo"),
+        center_title=True,
+        bgcolor=ft.Colors.GREEN_300,
+        automatically_imply_leading=False,
+    )
+    page.bottom_appbar = ft.BottomAppBar(
+        bgcolor=ft.Colors.BLUE,
+        shape=ft.NotchShape.CIRCULAR,
+        content=ft.Row(
+            controls=[
+                ft.IconButton(icon=ft.Icons.MENU, icon_color=ft.Colors.WHITE),
+                ft.Container(expand=True),
+                ft.IconButton(icon=ft.Icons.SEARCH, icon_color=ft.Colors.WHITE),
+                ft.IconButton(icon=ft.Icons.FAVORITE, icon_color=ft.Colors.WHITE),
+            ]
+        ),
     )
 
+    page.add(ft.Text("Body!"))
 
-ft.run(main)
+
+ft.app(main)

@@ -1,4 +1,5 @@
 import flet as ft
+import userpaths
 from pages.albums_page import AlbumsPage
 from pages.songs_page import SongsPage
 from pages.artists_page import ArtistsPage
@@ -18,9 +19,10 @@ def main(page: ft.Page):
 
     def close_di_open_picker():
         page.close(music_dir_dialog)
-        file_dialog = ft.FilePicker()
+        file_dialog = Controls.music_folder_selector
         page.add(file_dialog)
-        file_dialog.get_directory_path()
+        music_dir = file_dialog.get_directory_path(dialog_title="Pick a music folder", initial_directory=userpaths.get_my_music())
+        print(music_dir)
 
     music_dir_dialog = ft.AlertDialog(
         modal=True,
@@ -33,15 +35,18 @@ def main(page: ft.Page):
     )
     page.add(music_dir_dialog)
 
+
     if Globals.music_dir == "":
-        print("lets fix that")
         page.open(music_dir_dialog)
 
     active_page = "albums"
     sidebar_collapsed = False
 
+    
+
     # Containers
     content_container = ft.Container(expand=True)
+    
 
     nav_bar = ft.Container(
         #bgcolor=ft.Colors.GREY_200,
@@ -76,8 +81,9 @@ def main(page: ft.Page):
     main_layout = ft.Row(
         controls=[
             #nav_bar,
+            
             sidebar,
-            content_container
+            content_container,
         ],
         expand=True
     )
@@ -86,6 +92,7 @@ def main(page: ft.Page):
     content_container.content = AlbumsPage()
 
     page.add(main_layout)
+    page.add(Controls.player_bar)
 
 
 ft.app(target=main)

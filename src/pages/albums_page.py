@@ -1,4 +1,5 @@
 import flet as ft
+from controls import Controls
 
 def AlbumsPage():
     num_containers = 12
