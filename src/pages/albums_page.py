@@ -1,5 +1,10 @@
 import flet as ft
-from controls import Controls
+#from ..controls import Controls
+
+def generate_card():
+    return ft.Card(content=[
+        ft.Text("CarD")
+    ])
 
 def AlbumsPage():
     num_containers = 12
@@ -8,8 +13,8 @@ def AlbumsPage():
     for _ in range(num_containers):
         container = ft.Container(
             ink=True,
-            width=180,
-            height=180,
+            width=200,
+            height=200,
             border_radius=8,
             alignment=ft.alignment.center,
             bgcolor=ft.Colors.SURFACE,
@@ -19,7 +24,9 @@ def AlbumsPage():
                 right=ft.BorderSide(1, ft.Colors.ON_SURFACE_VARIANT),
                 bottom=ft.BorderSide(1, ft.Colors.ON_SURFACE_VARIANT),
             ),
-            on_click=lambda e: print("clicked!!")
+            on_click=lambda e: print("clicked!!"),
+            
+            #content=ft.Image(src="../example_imgs/Cover.jpg",fit=ft.ImageFit.CONTAIN,border_radius=8,)
         )
         containers.append(container)
 

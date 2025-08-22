@@ -3,9 +3,10 @@ import userpaths
 from pages.albums_page import AlbumsPage
 from pages.songs_page import SongsPage
 from pages.artists_page import ArtistsPage
+from pages.settings_page import SettingsPage
 from globals import Globals
 from controls import Controls
-
+import first_time
 
 def main(page: ft.Page):
     page.title = "Jam Music Player"
@@ -16,6 +17,10 @@ def main(page: ft.Page):
     page.window.maximized = True
     page.theme = Globals.purple_dark_default
     print(Globals.music_dir)
+
+    if Globals.first_time:
+        first_time.first_time()
+        #pass
 
     def close_di_open_picker():
         page.close(music_dir_dialog)
@@ -67,13 +72,18 @@ def main(page: ft.Page):
             content_container.content = SongsPage()
         elif route == "artists":
             content_container.content = ArtistsPage()
+        elif route == "settings":
+            content_container.content = SettingsPage()
         page.update()
 
 
     sidebar = ft.Column(
         controls=[
             ft.IconButton(icon=ft.Icons.ALBUM, on_click=lambda e: navigate("albums")),
-            ft.IconButton(icon=ft.Icons.MUSIC_NOTE, on_click=lambda e: navigate("songs"))
+            ft.IconButton(icon=ft.Icons.MUSIC_NOTE, on_click=lambda e: navigate("songs")),
+            ft.IconButton(icon=ft.Icons.MIC, on_click=lambda e: navigate("artists")),
+            ft.Container(expand=True),
+            ft.IconButton(icon=ft.Icons.SETTINGS, on_click=lambda e: navigate("settings"))
         ]
     )
 
