@@ -1,4 +1,8 @@
-sidebar_p = ft.NavigationRail(
+import flet as ft
+
+def SideBarRail():
+
+    return ft.NavigationRail(
         selected_index=0,
         destinations=[
             ft.NavigationRailDestination(
