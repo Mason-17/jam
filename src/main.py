@@ -12,7 +12,32 @@ def main(page: ft.Page):
     active_page = "albums"
     page.window.maximized=True
 
-    control_bar = ft.Row()
+    control_bar = ft.Row(
+        alignment=ft.MainAxisAlignment.CENTER,
+        #expand=True,
+        controls=[
+            ft.IconButton(icon=ft.Icons.PLAY_ARROW)
+        ],
+    )
+
+    bar_card = ft.Container(
+        content=ft.Card(
+            content=control_bar,
+            elevation=5
+        ),
+        padding=ft.padding.symmetric(vertical=20,horizontal=15,),
+        width=None,
+        margin=ft.Margin(0,0,0,20)
+    )
+
+    def navrail_helper(i):
+        if i == 0:
+            navigate("home")
+        elif i == 1:
+            navigate("albums")
+        elif i ==2:
+            navigate("")
+        #page.update()
 
     sidebar_p = ft.NavigationRail(
         selected_index=0,
@@ -30,8 +55,8 @@ def main(page: ft.Page):
                 icon=ft.Icons.MUSIC_NOTE_OUTLINED,
                 selected_icon=ft.Icons.MUSIC_NOTE
             )
-        ]
-
+        ],
+        on_change=lambda e: navrail_helper(e.control.selected_index)
     )
     
 
@@ -50,6 +75,7 @@ def main(page: ft.Page):
 
         page.update()
 
+
     sidebar = ft.Column(
         controls=[
             ft.IconButton(icon=ft.Icons.HOUSE,on_click=lambda e: navigate("home")),
@@ -62,16 +88,25 @@ def main(page: ft.Page):
         ]
     )
 
-    main_layout = ft.Row(
+    combiner = ft.Column(
         controls=[
-            #sidebar,
-            sidebar_p,
-            content_container
+            content_container,
+            #control_bar
+            bar_card
         ],
         expand=True
     )
 
-    content_container.content=AlbumsPage()
+    main_layout = ft.Row(
+        controls=[
+            sidebar,
+            #sidebar_p,
+            combiner
+        ],
+        expand=True
+    )
+
+    content_container.content=HomePage()
     page.add(main_layout)
 
 ft.app(main)
