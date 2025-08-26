@@ -11,6 +11,28 @@ def main(page: ft.Page):
     content_container = ft.Container(expand=True)
     active_page = "albums"
     page.window.maximized=True
+
+    control_bar = ft.Row()
+
+    sidebar_p = ft.NavigationRail(
+        selected_index=0,
+        destinations=[
+            ft.NavigationRailDestination(
+                icon=ft.Icons.HOUSE_OUTLINED,
+                selected_icon=ft.Icons.HOUSE,
+                
+            ),
+            ft.NavigationRailDestination(
+                icon=ft.Icons.ALBUM_OUTLINED,
+                selected_icon=ft.Icons.ALBUM,
+            ),
+            ft.NavigationRailDestination(
+                icon=ft.Icons.MUSIC_NOTE_OUTLINED,
+                selected_icon=ft.Icons.MUSIC_NOTE
+            )
+        ]
+
+    )
     
 
     def navigate(route):
@@ -42,7 +64,8 @@ def main(page: ft.Page):
 
     main_layout = ft.Row(
         controls=[
-            sidebar,
+            #sidebar,
+            sidebar_p,
             content_container
         ],
         expand=True
