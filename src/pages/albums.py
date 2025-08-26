@@ -2,33 +2,40 @@ import flet as ft
 
 def AlbumsPage():
     grid = ft.GridView(
-        expand=1,
         runs_count=5,
-        max_extent=160,
-        child_aspect_ratio=1.0,
+        run_spacing=5,
         spacing=5,
-        run_spacing=5
+        child_aspect_ratio=.9
     )
-    for _ in range (0,60):
+
+    for _ in range(30):
         grid.controls.append(
-            ft.IconButton(
+            ft.Container(
                 content=ft.Column(
                     controls=[
                         ft.Image(
-                            "../examples/Cover.jpg",
-                            fit=ft.ImageFit.COVER,
-                            border_radius=8,
-                            width=120,
-                            height=120
+                            src="../examples/Cover.jpg",
+                            border_radius=10,
+                            #width=200,
+                            #height=200
                         ),
-                        ft.Text("album ig",size=12,text_align="center",no_wrap=True)
-                    ]
+                        ft.Text(
+                            "albumfaljdlkjaajfjfj928982j9j2f982j98j29jf92jf",
+                            text_align="center",
+                            overflow=ft.TextOverflow.ELLIPSIS,
+                            no_wrap=True
+                        )
+                    ],
+                    alignment=ft.MainAxisAlignment.START,
+                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                    spacing=3
                 ),
-                #icon_size=160,
-                style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=8)),
-                padding=10,
-                width=120,
-                height=200
+                ink=True,
+                padding=4,
+                margin=4,
+                border_radius=10,
+                on_click=lambda e: print("clicked1"),
             )
         )
+
     return grid
