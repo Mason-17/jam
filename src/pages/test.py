@@ -4,7 +4,7 @@ def Test():
     return ft.GridView(
         controls=[
             ft.Container(
-                content=ft.Image(src="../examples/Cover.jpg",border_radius=10),
+                content=ft.Image(src="https://picsum.photos/200",border_radius=10),
                 margin=10,
                 padding=10,
                 alignment=ft.alignment.center,

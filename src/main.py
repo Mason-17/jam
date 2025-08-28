@@ -1,5 +1,6 @@
 import flet as ft
 from pages.albums import AlbumsPage
+from pages.artists import ArtistsPage
 from pages.home import HomePage
 from pages.settings import SettingsPage
 from pages.test import Test
@@ -10,6 +11,7 @@ from components.sidebar import SideBar
 PAGES = {
     "home": HomePage,
     "albums": AlbumsPage,
+    "artists": ArtistsPage,
     "settings": SettingsPage,
     "test": Test
 }
